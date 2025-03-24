@@ -9,12 +9,12 @@ url = "https://aviationweather.gov/api/data/metar?ids=KMCI&format=json&taf=false
 response = requests.get(url)
 data = response.json()
 
-# Task 1: Print first six receiptTime values (creatively using slicing)
+# Print first six receiptTime values using 
 print("Receipt Times:")
 for entry in data[:6]:
     print(entry['receiptTime'])
 
-# Task 2: Extract temperatures and calculate average
+# Extract temperatures and calculate average
 temperatures = [entry['temp'] for entry in data if entry['temp'] is not None]
 
 if temperatures:
@@ -23,7 +23,7 @@ if temperatures:
 else:
     print("Average Temperature: No temperature data available")
 
-# Task 3: Determine if majority of observations were cloudy
+# Determine if majority of observations were cloudy
 total_cloud_entries = 0
 cloudy_entries = 0
 
