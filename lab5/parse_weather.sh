@@ -12,7 +12,7 @@ echo "$receipt_times" | while read -r line && [ $counter -lt 6 ]; do
     ((counter++))
 done
 
-# Task 5 & 6: Calculate average temperature using the correct field 'temp'
+# Calculate average temperature using the correct field 'temp'
 temps=$(jq '[.[].temp | select(. != null)]' aviation.json)
 temp_count=$(echo "$temps" | jq 'length')
 
@@ -23,7 +23,7 @@ else
     echo "Average Temperature: $avg_temp"
 fi
 
-# Task 7 & 8: Determine if majority of observations were cloudy (not "CLR")
+# Determine if majority of observations were cloudy (not "CLR")
 cloudy_count=$(jq '[.[].clouds[].cover != "CLR"] | map(select(.==true)) | length' aviation.json)
 total_entries=$(jq '[.[].clouds[].cover] | length' aviation.json)
 
